@@ -7,15 +7,7 @@ public class Force {
     private double x;
     private double y;
 
-    public Force() {
-        degrees = 0;
-        magnitude = 0;
-        radians = 0;
-        x = 0;
-        y = 0;
-    }
-
-    public Force(int degrees, int magnitude) {
+    public Force(double degrees, double magnitude) {
         this.degrees = degrees;
         this.magnitude = magnitude;
         radians = Math.toRadians(degrees);
@@ -24,13 +16,12 @@ public class Force {
     }
 
     public Force add(Force force) {
-        Force solution = new Force();
-        solution.x = this.x + force.x;
-        solution.y = this.y + force.y;
-        solution.magnitude = Math.sqrt(solution.x * solution.x
-                + solution.y * solution.y);
-        solution.degrees = Math.toDegrees(Math.atan(solution.y / solution.x));
-        return solution;
+        double x = this.x + force.x;
+        double y = this.y + force.y;
+        double magnitude = Math.sqrt(x * x
+                + y * y);
+        double degrees = Math.toDegrees(Math.atan(y / x));
+        return new Force(degrees, magnitude);
     }
 
     @Override
