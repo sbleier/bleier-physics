@@ -35,8 +35,8 @@ public class Force {
 
     @Override
     public String toString() {
-        return "Force{" +
-                "magnitude="
+        return "Force{"
+                + "magnitude="
                 + magnitude
                 + ", degrees="
                 + degrees
