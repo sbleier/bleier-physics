@@ -24,6 +24,26 @@ public class Force {
         return new Force(degrees, magnitude);
     }
 
+    public double getDegrees() {
+        return degrees;
+    }
+
+    public double getMagnitude() {
+        return magnitude;
+    }
+
+    public double getRadians() {
+        return radians;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
     @Override
     public String toString() {
         return "Force{"
