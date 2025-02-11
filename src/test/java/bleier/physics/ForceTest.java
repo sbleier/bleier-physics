@@ -19,4 +19,19 @@ class ForceTest {
         assertEquals(68.5, c.getDegrees(), 0.1);
         assertEquals(16.08, c.getMagnitude(), 0.1);
     }
+
+    @Test
+    public void scale() {
+        //given
+        Force a = new Force(30, 15);
+        double t = 0.391;
+
+        //when
+        Force b = a.scale(t);
+
+        //then
+        assertEquals(30, b.getDegrees(), 0.1);
+        assertEquals(5.865, b.getMagnitude(), 0.1);
+
+    }
 }

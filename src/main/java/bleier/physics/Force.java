@@ -24,6 +24,10 @@ public class Force {
         return new Force(degrees, magnitude);
     }
 
+    public Force scale(double t){
+        return new Force(degrees, magnitude * t);
+    }
+
     public double getDegrees() {
         return degrees;
     }
