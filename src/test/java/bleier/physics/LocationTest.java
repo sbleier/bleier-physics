@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LocationTest {
 
     @Test
-    public void apply(){
+    public void apply() {
         //given
         Location location = new Location(7, 3);
         Force a = new Force(36.87, 5);
