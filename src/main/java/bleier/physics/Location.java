@@ -8,9 +8,9 @@ public class Location {
         this.y = y;
     }
 
-    public Location apply(Force force) {
-        double x = force.getX();
-        double y = force.getY();
+    public Location apply(Force f) {
+        double x = this.x + f.getX();
+        double y = this.y + f.getY();
         Location location = new Location( x, y);
         return location;
     }
