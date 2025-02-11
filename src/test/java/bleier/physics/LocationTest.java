@@ -16,6 +16,7 @@ class LocationTest {
         Location newLocation = location.apply(a);
 
         //then
-
+        assertEquals(11, a.getX(), .5);
+        assertEquals(6, a.getY(), .5);
     }
 }

@@ -15,4 +15,12 @@ public class Location {
         return location;
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
 }
