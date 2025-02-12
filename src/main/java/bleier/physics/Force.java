@@ -1,43 +1,36 @@
 package bleier.physics;
 
 public class Force {
-    private double degrees;
-    private double magnitude;
-    private double radians;
     private double x;
     private double y;
 
-    public Force(double degrees, double magnitude) {
-        this.degrees = degrees;
-        this.magnitude = magnitude;
-        radians = Math.toRadians(degrees);
-        x = magnitude * Math.cos(radians);
-        y = magnitude * Math.sin(radians);
+    public Force(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Force(Angle angle, double magnitude){
+        x = magnitude * Math.cos(angle.toRadians());
+        y = magnitude * Math.sin(angle.toRadians());
     }
 
     public Force add(Force force) {
         double x = this.x + force.x;
         double y = this.y + force.y;
-        double magnitude = Math.sqrt(x * x
-                + y * y);
-        double degrees = Math.toDegrees(Math.atan(y / x));
-        return new Force(degrees, magnitude);
+        return new Force(x, y);
     }
 
     public Force scale(double t) {
-        return new Force(degrees, magnitude * t);
+        return new Force((x * t), (y * t));
     }
 
     public double getDegrees() {
-        return degrees;
+        return Math.toDegrees(Math.atan(y / x));
     }
 
     public double getMagnitude() {
-        return magnitude;
-    }
-
-    public double getRadians() {
-        return radians;
+        return Math.sqrt(x * x
+                + y * y);
     }
 
     public double getX() {
@@ -50,11 +43,9 @@ public class Force {
 
     @Override
     public String toString() {
-        return "Force{"
-                + "magnitude="
-                + magnitude
-                + ", degrees="
-                + degrees
-                + '}';
+        return "Force{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

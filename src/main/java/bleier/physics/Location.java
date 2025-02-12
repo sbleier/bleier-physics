@@ -1,8 +1,8 @@
 package bleier.physics;
 
 public class Location {
-    double x;
-    double y;
+    private double x;
+    private double y;
 
     public Location(double x, double y) {
         this.x = x;
@@ -15,6 +15,10 @@ public class Location {
         Location location = new Location(x, y);
         return location;
     }
+
+    /*public Location apply(Force f, double t){
+
+    } */
 
     public double getX() {
         return x;

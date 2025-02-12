@@ -9,8 +9,11 @@ class ForceTest {
     @Test
     public void add() {
         //given (set variables)
-        Force a = new Force(32, 10);
-        Force b = new Force(105, 10);
+        Angle angle1 = new Angle(32);
+        Force a = new Force(angle1, 10);
+
+        Angle angle2 = new Angle(105);
+        Force b = new Force(angle2, 10);
 
         //when (test variables)
         Force c = a.add(b);
@@ -23,7 +26,8 @@ class ForceTest {
     @Test
     public void scale() {
         //given
-        Force a = new Force(30, 15);
+        Angle angle1 = new Angle(30);
+        Force a = new Force(angle1, 15);
         double t = 0.391;
 
         //when

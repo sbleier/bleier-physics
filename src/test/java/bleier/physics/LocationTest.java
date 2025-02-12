@@ -10,10 +10,11 @@ class LocationTest {
     public void apply() {
         //given
         Location location = new Location(7, 3);
-        Force a = new Force(36.87, 5);
+        Angle a = new Angle(36.87);
+        Force f = new Force(a, 5);
 
         //when
-        Location newLocation = location.apply(a);
+        Location newLocation = location.apply(f);
 
         //then
         assertEquals(11, newLocation.getX(), .5);
