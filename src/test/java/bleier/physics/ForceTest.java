@@ -9,14 +9,16 @@ class ForceTest {
     @Test
     public void add() {
         //given (set variables)
-        Angle angle1 = new Angle(32);
-        Force a = new Force(angle1, 10);
+        Force a = new Force(new Angle(32), 10);
 
-        Angle angle2 = new Angle(105);
-        Force b = new Force(angle2, 10);
+
+        Force b = new Force(new Angle(105), 10);
 
         //when (test variables)
         Force c = a.add(b);
+
+        Force d = new Force(new Angle(68), 90);
+        System.out.println(d.getX() + " " + d.getY());
 
         //then (check results)
         assertEquals(68.5, c.getDegrees(), 0.1);

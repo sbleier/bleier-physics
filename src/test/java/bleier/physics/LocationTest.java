@@ -14,10 +14,27 @@ class LocationTest {
         Force f = new Force(a, 5);
 
         //when
-        Location newLocation = location.apply(f);
+        Location newLocation = location.move(f);
 
         //then
         assertEquals(11, newLocation.getX(), .5);
         assertEquals(6, newLocation.getY(), .5);
+    }
+
+    @Test
+    public void apply2() {
+
+        //given
+        Location location = new Location(0, 0);
+        Angle a = new Angle(68);
+        Force f = new Force(a, 90);
+
+        //when
+        Location newLocation = location.move(f);
+
+        //then
+
+
+
     }
 }

@@ -1,6 +1,9 @@
 package bleier.physics;
 
 public class Force {
+
+    public static final Force GRAVITY = new Force(0, -9.8);
+
     private double x;
     private double y;
 
@@ -15,9 +18,7 @@ public class Force {
     }
 
     public Force add(Force force) {
-        double x = this.x + force.x;
-        double y = this.y + force.y;
-        return new Force(x, y);
+        return new Force(x + force.x, y + force.y);
     }
 
     public Force scale(double t) {

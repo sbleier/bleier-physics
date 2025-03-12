@@ -9,16 +9,11 @@ public class Location {
         this.y = y;
     }
 
-    public Location apply(Force f) {
-        double x = this.x + f.getX();
-        double y = this.y + f.getY();
-        Location location = new Location(x, y);
-        return location;
+
+    public Location move(Force f) {
+        return new Location(this.x + f.getX(), this.y + f.getY());
     }
 
-    /*public Location apply(Force f, double t){
-
-    } */
 
     public double getX() {
         return x;
@@ -26,6 +21,14 @@ public class Location {
 
     public double getY() {
         return y;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 
 }
