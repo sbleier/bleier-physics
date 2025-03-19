@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
 
 public class PhysicsFrame extends JFrame {
 
-    private final JLabel angleName = new JLabel("Angle:");
     private final JSlider angleSlider = new JSlider(JSlider.HORIZONTAL, 0, 90, 45);
     private final JTextField magnitudeField = new JTextField("Magnitude");
     private final JTextField timeField = new JTextField("Time");
     private final JLabel resultLabel = new JLabel(("x, y"));
     private final PhysicsController controller;
+    private final ProjectileGraph graph = new ProjectileGraph();
 
     public PhysicsFrame() {
 
@@ -24,17 +24,18 @@ public class PhysicsFrame extends JFrame {
         setSize(300, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        setLayout(new GridLayout(4, 2));
+        setLayout(new BorderLayout());
 
-        controller = new PhysicsController(angleSlider, magnitudeField, timeField, resultLabel);
+        controller = new PhysicsController(angleSlider, magnitudeField, timeField, graph);
 
-        add(angleName);
-        add(angleSlider);
-        add(magnitudeField);
-        //add(new Label());
-        add(timeField);
-        //add(new Label());
-        add(resultLabel);
+        JPanel westPanel = new JPanel();
+        westPanel.setLayout(new GridLayout(3, 1));
+        westPanel.add(angleSlider);
+        westPanel.add(magnitudeField);
+        westPanel.add(timeField);
+        add(westPanel, BorderLayout.WEST);
+
+        add(graph, BorderLayout.CENTER);
 
         angleSlider.addChangeListener(new ChangeListener() {
             @Override

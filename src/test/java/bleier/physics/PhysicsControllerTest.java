@@ -19,7 +19,7 @@ class PhysicsControllerTest {
         doReturn("10").when(timeField).getText();
         JLabel resultLabel = mock();
 
-        PhysicsController controller = new PhysicsController(slider, magnitudeField, timeField, resultLabel);
+        PhysicsController controller = new PhysicsController(slider, magnitudeField, timeField);
 
         controller.calculate();
 
