@@ -11,11 +11,12 @@ import java.awt.event.ActionListener;
 
 public class PhysicsFrame extends JFrame {
 
-    JLabel angleName = new JLabel("Angle:");
-    JSlider angleSlider = new JSlider(JSlider.HORIZONTAL, 0, 90, 45);
-    JTextField magnitudeField = new JTextField("Magnitude");
-    JTextField timeField = new JTextField("Time");
-    JLabel resultLabel = new JLabel(("x, y"));
+    private final JLabel angleName = new JLabel("Angle:");
+    private final JSlider angleSlider = new JSlider(JSlider.HORIZONTAL, 0, 90, 45);
+    private final JTextField magnitudeField = new JTextField("Magnitude");
+    private final JTextField timeField = new JTextField("Time");
+    private final JLabel resultLabel = new JLabel(("x, y"));
+    private final PhysicsController controller;
 
     public PhysicsFrame() {
 
@@ -24,6 +25,8 @@ public class PhysicsFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setLayout(new GridLayout(4, 2));
+
+        controller = new PhysicsController(angleSlider, magnitudeField, timeField, resultLabel);
 
         add(angleName);
         add(angleSlider);
@@ -36,26 +39,26 @@ public class PhysicsFrame extends JFrame {
         angleSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
             }
         });
 
         magnitudeField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
 
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
 
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
 
             }
         });
@@ -63,49 +66,23 @@ public class PhysicsFrame extends JFrame {
         timeField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
 
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
 
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                calculateProctileLocation();
+                controller.calculate();
             }
         });
     }
 
-    private void calculateProctileLocation(){
-        double angle = (angleSlider.getValue());
-        String magnitudeText = magnitudeField.getText();
-        if(magnitudeText.isEmpty() || ! magnitudeText.matches("\\d+")) {
-            return;
-        }
-        double magnitude = Double.parseDouble(magnitudeField.getText());
-
-        String timeText = timeField.getText();
-        if(timeText.isEmpty() || ! timeText.matches("\\d+")) {
-            return;
-        }
-        double time = Double.parseDouble(timeField.getText());
-
-        Projectile p = new Projectile(
-                new Location(0, 0),
-                new Force(new Angle(angle), magnitude));
-        for (int i = 0; i < time; i++) {
-            p.move(1);
-        }
-
-        Location location = p.getLocation();
-        String formatX = String.format("%.2f", location.getX());
-        String formatY = String.format("%.2f", location.getY());
-        resultLabel.setText("(" + formatX + "," + formatY + ")");
-    }
 
 
     public static void main(String[] args) {

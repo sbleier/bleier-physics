@@ -12,7 +12,7 @@ class PhysicsControllerTest {
     @Test
     public void calculate() {
         JSlider slider = mock();
-        doReturn(45).when(slider).getValue();
+        doReturn(52).when(slider).getValue();
         JTextField magnitudeField = mock();
         doReturn("80").when(magnitudeField).getText();
         JTextField timeField = mock();
@@ -23,6 +23,6 @@ class PhysicsControllerTest {
 
         controller.calculate();
 
-        verify(resultLabel).setText("(565.69, 565.69)");
+        verify(resultLabel).setText("(492.53, 630.41)");
     }
 }

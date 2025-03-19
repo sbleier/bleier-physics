@@ -16,7 +16,7 @@ public class PhysicsController {
     }
 
     public void calculate() {
-        double angle = (slider.getValue());
+        double angle = slider.getValue();
         String magnitudeText = magnitudeField.getText();
         if(magnitudeText.isEmpty() || ! magnitudeText.matches("\\d+")) {
             return;
